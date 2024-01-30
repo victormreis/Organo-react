@@ -1,3 +1,4 @@
+import Button from "../Button/Button";
 import DropDown from "../DropDonw/DropDonw";
 import Input from "../TextField/Input";
 import "./Form.css";
@@ -31,7 +32,11 @@ const Form = () => {
           placeholder="Digite o endereço da imagem"
           type="text"
         />
-        <DropDown itens={times} label="Time" />
+        <DropDown
+          itens={times}
+          label="Time"
+        />
+        <Button>Criar card</Button>
       </form>
     </section>
   );
