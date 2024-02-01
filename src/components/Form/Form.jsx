@@ -5,26 +5,24 @@ import "./Form.css";
 
 import {useState} from "react";
 
-const Form = () => {
-  const teams = [
-    "Programação",
-    "Front-End",
-    "Data Science",
-    "Devops",
-    "UX e UI",
-    "Mobile",
-    "Inovação e gestão",
-  ];
-
-  const handleSubmit = e => {
+const Form = (props) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const card = {
-      name: name,
-      position: position,
-      image: image,
-      team: team,
+    const employe = {
+      name,
+      position,
+      image,
+      team,
     };
-    console.log(card);
+    props.onSubmit(employe);
+    resetInputs();
+  };
+
+  const resetInputs = () => {
+    setName("");
+    setPosition("");
+    setImage("");
+    setTeam("");
   };
 
   const [name, setName] = useState("");
@@ -41,7 +39,7 @@ const Form = () => {
           placeholder="Digite o seu nome"
           required={true}
           value={name}
-          setInput={value => setName(value)}
+          setInput={(value) => setName(value)}
           type="text"
         />
         <Input
@@ -49,22 +47,22 @@ const Form = () => {
           placeholder="Digite o seu cargo"
           required={true}
           value={position}
-          setInput={value => setPosition(value)}
+          setInput={(value) => setPosition(value)}
           type="text"
         />
         <Input
           label="Imagem"
           placeholder="Digite o endereço da imagem"
           value={image}
-          setInput={value => setImage(value)}
+          setInput={(value) => setImage(value)}
           type="text"
         />
         <DropDown
-          itens={teams}
+          itens={props.teams}
           label="Time"
           required={true}
           value={team}
-          setInput={value => setTeam(value)}
+          setInput={(value) => setTeam(value)}
         />
         <Button>Criar card</Button>
       </form>
