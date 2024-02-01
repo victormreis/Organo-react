@@ -1,11 +1,22 @@
+import {useState} from "react";
 import "./Card.css";
 
 const Card = (props) => {
+  const [imageError, setImageError] = useState(false);
+  const userImage = "/imagens/user.png";
+  const imageURL = imageError ? userImage : props.employe.image;
+
+  const handleImageError = () => {
+    setImageError(true);
+  }; 
   return (
     <div className="card">
-      <div className="header">
+      <div
+        className="header"
+        style={{backgroundColor: props.backgroundColor}}>
         <img
-          src={props.employe.image}
+          src={imageURL}
+          onError={handleImageError}
           alt={`Foto do ${props.employe.name}`}
         />
       </div>

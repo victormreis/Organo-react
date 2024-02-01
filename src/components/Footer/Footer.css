@@ -1,0 +1,21 @@
+.footer_container {
+  background-color: #6278f7;
+  padding: 89px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-image: url('/public/imagens/fundo.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50px 25px;
+}
+
+.social_media img{ 
+  margin-right: 35px;  
+}
+
+.footer_container div p {
+  color: #fff;
+  font-weight: 500;
+  font-size: 20px;
+}

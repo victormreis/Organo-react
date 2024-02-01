@@ -2,6 +2,7 @@ import {useState} from "react";
 import Banner from "./components/Banner/Banner";
 import Form from "./components/Form/Form";
 import Team from "./components/Team/Team";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const teams = [
@@ -63,6 +64,7 @@ function App() {
           employees={employees.filter((employe) => employe.team === team.name)}
         />
       ))}
+      <Footer />
     </div>
   );
 }
