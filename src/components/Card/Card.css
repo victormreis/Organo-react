@@ -1,6 +1,6 @@
 .card {
   width: 280px;
-  margin-top: 24px;
+  position: relative;
 }
 
 .card .header {  
@@ -34,4 +34,11 @@
   line-height: 22px;
   color: #212121;
   padding: 0 16px;
+}
+
+.delete {
+  position: absolute;
+  right: -12px;
+  top: -12px;
+  cursor: pointer; 
 }
