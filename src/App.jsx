@@ -51,29 +51,15 @@ function App() {
 	const initial = [
 		{
 			id: uuidv4(),
+      liked: false,
 			name: "VICTOR MARTINS DOS REIS",
 			position: "Desenvolvedor de software",
 			image: "https://github.com/victormreis.png",
 			team: teams[0].name,
-		},
+		},	
 		{
 			id: uuidv4(),
-			name: "DANIEL ARTINE",
-			position: "Engenheiro de Software na Stone Age",
-			image:
-				"https://www.alura.com.br/assets/img/lideres/daniel-artine.1647533644.jpeg",
-			team: teams[3].name,
-		},
-		{
-			id: uuidv4(),
-			name: "GUILHERME LIMA",
-			position: "Desenvolvedor Python e JavaScript na Alura",
-			image:
-				"	https://www.alura.com.br/assets/img/lideres/guilherme-lima.1647533644.jpeg",
-			team: teams[3].name,
-		},
-		{
-			id: uuidv4(),
+      liked: false,
 			name: "PAULO SILVEIRA",
 			position: "Hipster e CEO da Alura",
 			image:
@@ -82,6 +68,7 @@ function App() {
 		},
 		{
 			id: uuidv4(),
+      liked: false,
 			name: "JULIANA AMOASEI",
 			position: "Desenvolvedora de software e instrutora",
 			image:
@@ -90,6 +77,7 @@ function App() {
 		},
 		{
 			id: uuidv4(),
+      liked: false,
 			name: "GUSTAVO GUANABARA",
 			position: "Engenheiro de Software e instrutor",
 			image:
@@ -98,22 +86,16 @@ function App() {
 		},
 		{
 			id: uuidv4(),
+      liked: false,
 			name: "GUSTAVO LIMA",
 			position: "Desenvolvedor Python e JavaScript na Alura",
 			image:
 				"	https://www.alura.com.br/assets/img/lideres/guilherme-lima.1647533644.jpeg",
 			team: teams[1].name,
-		},
+		},	
 		{
 			id: uuidv4(),
-			name: "PAULO SILVEIRA",
-			position: "Hipster e CEO da Alura",
-			image:
-				"https://www.alura.com.br/assets/img/lideres/paulo-silveira.1647533644.jpeg",
-			team: teams[4].name,
-		},
-		{
-			id: uuidv4(),
+      liked: true,
 			name: "DAIANE SILVA",
 			position: "Desenvolvedora de software e instrutora de criancinhas",
 			image:
@@ -144,7 +126,15 @@ function App() {
 			})
 		);
 	};
-  
+
+  const clickedLike = (id) => {
+    setEmployees(employees.map((employe) => {
+      if(employe.id === id){
+        employe.liked = !employe.liked
+      }
+      return employe
+    }))
+  }   
 
   const toaster = (message) => {
     toast.success(message, {
@@ -183,6 +173,7 @@ function App() {
 					employees={employees.filter((employe) => employe.team === team.name)}
 					onDelete={onDelete}
 					changeColor={changeColor}
+          clickedLike={clickedLike}
 				/>
 			))}
 			<Footer />

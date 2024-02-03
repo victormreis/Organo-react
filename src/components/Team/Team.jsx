@@ -25,6 +25,7 @@ const Team = (props) => {
 								backgroundColor={props.cor}
 								onDelete={props.onDelete}
 								id={employe.id}
+                clickedLike={props.clickedLike}
 							/>
 						);
 					})}
