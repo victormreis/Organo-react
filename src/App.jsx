@@ -1,93 +1,191 @@
-import {useState} from "react";
 import Banner from "./components/Banner/Banner";
 import Form from "./components/Form/Form";
 import Team from "./components/Team/Team";
 import Footer from "./components/Footer/Footer";
 
+import {useState} from "react";
+import {v4 as uuidv4} from "uuid";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
 	const [teams, setTeams] = useState([
 		{
+			id: uuidv4(),
+			name: "Front-end",
+			cor: "#82CFFA",
+		},
+		{
+			id: uuidv4(),
 			name: "Programação",
-			primaryColor: "#D9F7E9",
-			secondaryColor: "#57C278",
+			cor: "#57C278",
 		},
 		{
-			name: "Front-End",
-			primaryColor: "#E8F8FF",
-			secondaryColor: "#82CFFA",
-		},
-		{
+			id: uuidv4(),
 			name: "Data Science",
-			primaryColor: "#F0F8E2",
-			secondaryColor: "#A6D157",
+			cor: "#A6D157",
 		},
 		{
+			id: uuidv4(),
 			name: "Devops",
-			primaryColor: "#FDE7E8",
-			secondaryColor: "#E06B69",
+			cor: "#E06B69",
 		},
 		{
+			id: uuidv4(),
 			name: "UX e UI",
-			primaryColor: "#FAE9F5",
-			secondaryColor: "#DB6EBF",
+			cor: "#DB6EBF",
 		},
 		{
+			id: uuidv4(),
 			name: "Mobile",
-			primaryColor: "#FFF5D9",
-			secondaryColor: "#FFBA05",
+			cor: "#FFBA05",
 		},
 		{
+			id: uuidv4(),
 			name: "Inovação e gestão",
-			primaryColor: "#FFEEDF",
-			secondaryColor: "#FF8A29",
+			cor: "#FF8A29",
 		},
 	]);
 
-	const [employees, setEmployees] = useState([]);
+	const initial = [
+		{
+			id: uuidv4(),
+			name: "VICTOR MARTINS DOS REIS",
+			position: "Desenvolvedor de software",
+			image: "https://github.com/victormreis.png",
+			team: teams[0].name,
+		},
+		{
+			id: uuidv4(),
+			name: "DANIEL ARTINE",
+			position: "Engenheiro de Software na Stone Age",
+			image:
+				"https://www.alura.com.br/assets/img/lideres/daniel-artine.1647533644.jpeg",
+			team: teams[3].name,
+		},
+		{
+			id: uuidv4(),
+			name: "GUILHERME LIMA",
+			position: "Desenvolvedor Python e JavaScript na Alura",
+			image:
+				"	https://www.alura.com.br/assets/img/lideres/guilherme-lima.1647533644.jpeg",
+			team: teams[3].name,
+		},
+		{
+			id: uuidv4(),
+			name: "PAULO SILVEIRA",
+			position: "Hipster e CEO da Alura",
+			image:
+				"https://www.alura.com.br/assets/img/lideres/paulo-silveira.1647533644.jpeg",
+			team: teams[2].name,
+		},
+		{
+			id: uuidv4(),
+			name: "JULIANA AMOASEI",
+			position: "Desenvolvedora de software e instrutora",
+			image:
+				"https://www.alura.com.br/assets/img/lideres/juliana-amoasei.1647533644.jpeg",
+			team: teams[1].name,
+		},
+		{
+			id: uuidv4(),
+			name: "GUSTAVO GUANABARA",
+			position: "Engenheiro de Software e instrutor",
+			image:
+				"https://www.alura.com.br/assets/img/lideres/daniel-artine.1647533644.jpeg",
+			team: teams[2].name,
+		},
+		{
+			id: uuidv4(),
+			name: "GUSTAVO LIMA",
+			position: "Desenvolvedor Python e JavaScript na Alura",
+			image:
+				"	https://www.alura.com.br/assets/img/lideres/guilherme-lima.1647533644.jpeg",
+			team: teams[1].name,
+		},
+		{
+			id: uuidv4(),
+			name: "PAULO SILVEIRA",
+			position: "Hipster e CEO da Alura",
+			image:
+				"https://www.alura.com.br/assets/img/lideres/paulo-silveira.1647533644.jpeg",
+			team: teams[4].name,
+		},
+		{
+			id: uuidv4(),
+			name: "DAIANE SILVA",
+			position: "Desenvolvedora de software e instrutora de criancinhas",
+			image:
+				"https://media.licdn.com/dms/image/C4E03AQEg3Fmx-4zqFg/profile-displayphoto-shrink_800_800/0/1642886144259?e=1712188800&v=beta&t=JiZCMxGgma5QWI4WP6rNgouUjynpN4u2IQ8wt7R824I",
+			team: teams[0].name,
+		},
+	];
+
+	const [employees, setEmployees] = useState(initial);
 
 	const createNewEmploye = (employe) => {
-		setEmployees([...employees, employe]);
+		setEmployees([...employees, {...employe, id: uuidv4()}]);
 	};
 
-	const onDelete = () => {
-		console.log("colaborador deletado");
+	const onDelete = (id) => {
+		setEmployees(employees.filter((employe) => employe.id !== id));
 	};
 
-	const changeColor = (cor, teamName) => {
+	const changeColor = (cor, id) => {
 		setTeams(
 			teams.map((team) => {
-				if (team.name === teamName) {
-					team.secondaryColor = cor;
+				if (team.id === id) {
+					team.cor = cor;
 				}
 				return team;
 			})
 		);
-  }
+	};
+  
 
-		return (
-			<div className="App">
-				<Banner />
-				<Form
-					teams={teams.map((time) => time.name)}
-					onSubmit={(employe) => createNewEmploye(employe)}
-				/>
-				{teams.map((team) => (
-					<Team
-						key={team.name}
-						name={team.name}
-						primaryColor={team.primaryColor}
-						secondaryColor={team.secondaryColor}
-						employees={employees.filter(
-							(employe) => employe.team === team.name
-						)}
-						onDelete={onDelete}
-						changeColor={changeColor}
-					/>
-				))}
-				<Footer />
-			</div>
-		);
+  const alertar = () => {
+    toast.success('Time cadastrado com sucesso!', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",      
+      });
+  }
+  
+
+	const createNewTeam = (newTeam) => {
+		setTeams([...teams, {...newTeam, id: uuidv4()}]);
+    alertar()
 	};
 
+	return (
+		<div className="App">
+			<Banner />
+			<Form
+				teams={teams.map((team) => team.name)}
+				onSubmit={(employe) => createNewEmploye(employe)}
+				createNewTeam={createNewTeam}
+			/>
+      <ToastContainer />
+			{teams.map((team, index) => (
+				<Team
+					key={team.index}
+					name={team.name}
+					cor={team.cor}
+					id={team.id}
+					employees={employees.filter((employe) => employe.team === team.name)}
+					onDelete={onDelete}
+					changeColor={changeColor}
+				/>
+			))}
+			<Footer />
+		</div>
+	);
+}
 
 export default App;

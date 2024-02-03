@@ -13,7 +13,7 @@ const Card = (props) => {
 	};
 	return (
 		<div className="card">
-      <IoIosCloseCircle size={30} color className="delete" onClick={props.onDelete}/>        
+      <IoIosCloseCircle size={30} color className="delete" onClick={() => props.onDelete(props.id)}/>        
 			<div className="header" style={{backgroundColor: props.backgroundColor}}>
 				<img
 					src={imageURL}

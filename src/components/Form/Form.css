@@ -10,4 +10,21 @@
   border-radius: 20px;
   padding: 36px 64px;
   box-shadow: 8px 8px 16px rgba(0,0,0, 0.08);
+  /* position: relative; */
+}
+
+
+.color-team {
+  margin-bottom: 25px;
+}
+
+.color-team label {
+  /* display: block; */
+  margin-right: 16px;
+  font-size: 18px;
+  font-weight: bold; 
+}
+
+.color-team input {
+  width: 150px;
 }
