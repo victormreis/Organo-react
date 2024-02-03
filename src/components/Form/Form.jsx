@@ -24,10 +24,10 @@ const Form = (props) => {
 		setTeam("");
 	};
 
-  const resetInputsNewTeam = () => {
-    setColor('')
-    setNewTeam('')
-  }
+	const resetInputsNewTeam = () => {
+		setColor("");
+		setNewTeam("");
+	};
 
 	const [name, setName] = useState("");
 	const [position, setPosition] = useState("");
@@ -76,7 +76,7 @@ const Form = (props) => {
 				onSubmit={(event) => {
 					event.preventDefault();
 					props.createNewTeam({name: newTeam, cor: color});
-          resetInputsNewTeam()
+					resetInputsNewTeam();
 				}}
 			>
 				<h2>Preencha os dados para criar um novo time</h2>
@@ -88,23 +88,14 @@ const Form = (props) => {
 					setInput={(value) => setNewTeam(value)}
 					type="text"
 				/>
-				<div className="color-team">
-					<label>Escolha a cor do novo time</label>
-					<input
-						type="color"						
-						value={color}
-						onChange={(event) => setColor(event.target.value)}
-					/>
-				</div>
-				{/* <Input
-          label="Cor do time"
-          placeholder="Digite a cor do time"
-          required
-          value={color}
-          setInput={(value) => setColor(value)}
-          type="text"
-        />       */}
-
+				<Input
+					label="Cor do time"
+					placeholder="Digite a cor do time"
+					required
+					value={color}
+					setInput={(value) => setColor(value)}
+					type="color"
+				/>
 				<Button>Criar time</Button>
 			</form>
 		</section>

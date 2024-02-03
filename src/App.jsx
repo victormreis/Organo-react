@@ -126,10 +126,12 @@ function App() {
 
 	const createNewEmploye = (employe) => {
 		setEmployees([...employees, {...employe, id: uuidv4()}]);
+    toaster('Colaborador adicionado!')
 	};
 
 	const onDelete = (id) => {
 		setEmployees(employees.filter((employe) => employe.id !== id));
+    toaster('Colaborador Excluido!')
 	};
 
 	const changeColor = (cor, id) => {
@@ -144,10 +146,10 @@ function App() {
 	};
   
 
-  const alertar = () => {
-    toast.success('Time cadastrado com sucesso!', {
+  const toaster = (message) => {
+    toast.success(message, {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: true,
       closeOnClick: false,
       pauseOnHover: true,
@@ -160,7 +162,7 @@ function App() {
 
 	const createNewTeam = (newTeam) => {
 		setTeams([...teams, {...newTeam, id: uuidv4()}]);
-    alertar()
+    toaster('Time cadastrado com sucesso!')
 	};
 
 	return (

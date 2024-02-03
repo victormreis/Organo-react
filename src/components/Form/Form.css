@@ -1,30 +1,16 @@
 .form {
-  display: flex;
-  justify-content: center;
-  margin: 80px 0;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin: 80px 50px;
+	gap: 20px;
 }
 
 .form form {
-  max-width: 80%;
-  background-color: #f2f2f2;
-  border-radius: 20px;
-  padding: 36px 64px;
-  box-shadow: 8px 8px 16px rgba(0,0,0, 0.08);
-  /* position: relative; */
-}
-
-
-.color-team {
-  margin-bottom: 25px;
-}
-
-.color-team label {
-  /* display: block; */
-  margin-right: 16px;
-  font-size: 18px;
-  font-weight: bold; 
-}
-
-.color-team input {
-  width: 150px;
+	flex: 1;
+	background-color: #f2f2f2;
+	border-radius: 20px;
+	padding: 36px 64px;
+	box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.08);
+	/* position: relative; */
 }

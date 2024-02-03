@@ -6,7 +6,7 @@ const Input = (props) => {
 	//   props.setInput(e.target.value);
 	// };
 	return (
-		<div className="campo-texto">
+		<div className={`field field-${props.type}`}>
 			<label>{props.label}</label>
 			<input
 				onChange={(e) => props.setInput(e.target.value)}
